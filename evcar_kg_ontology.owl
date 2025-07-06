@@ -1,0 +1,414 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://www.evcar-kg.org/ontology"
+         xmlns="http://www.evcar-kg.org/ontology#">
+
+<owl:Ontology rdf:about="http://www.evcar-kg.org/ontology"/>
+
+<owl:ObjectProperty rdf:about="#locatedIn">
+  <rdfs:domain rdf:resource="#ChargingStation"/>
+  <rdfs:range rdf:resource="#District"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasNeighbor">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+  <rdfs:domain rdf:resource="#District"/>
+  <rdfs:range rdf:resource="#District"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#powers">
+  <rdfs:domain rdf:resource="#Substation"/>
+  <rdfs:range rdf:resource="#ChargingStation"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#suppliedBy">
+  <rdfs:domain rdf:resource="#District"/>
+  <rdfs:range rdf:resource="#Substation"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#managesDistrict">
+  <rdfs:domain rdf:resource="#DistrictAgent"/>
+  <rdfs:range rdf:resource="#District"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#observesNetworkState">
+  <rdfs:domain rdf:resource="#RedistributionAgent"/>
+  <rdfs:range rdf:resource="#QoSRecoveryState"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isInSoCCluster">
+  <rdfs:domain rdf:resource="#ElectricVehicle"/>
+  <rdfs:range rdf:resource="#SoCCluster"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#affectsDistrict">
+  <rdfs:domain rdf:resource="#PowerOutage"/>
+  <rdfs:range rdf:resource="#District"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#involvesVehicle">
+  <rdfs:domain rdf:resource="#ChargingSession"/>
+  <rdfs:range rdf:resource="#ElectricVehicle"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#atStation">
+  <rdfs:domain rdf:resource="#ChargingSession"/>
+  <rdfs:range rdf:resource="#ChargingStation"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#districtType">
+  <rdfs:domain rdf:resource="#District"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#currentLoad">
+  <rdfs:domain rdf:resource="#District"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#queueLength">
+  <rdfs:domain rdf:resource="#District"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#congestionLevel">
+  <rdfs:domain rdf:resource="#District"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#outageStatus">
+  <rdfs:domain rdf:resource="#District"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#surgeStatus">
+  <rdfs:domain rdf:resource="#District"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#numberOfChargers">
+  <rdfs:domain rdf:resource="#ChargingStation"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#capacity">
+  <rdfs:domain rdf:resource="#ChargingStation"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#currentQueueLength">
+  <rdfs:domain rdf:resource="#ChargingStation"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#averageWaitingTime">
+  <rdfs:domain rdf:resource="#ChargingStation"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#utilizationFactor">
+  <rdfs:domain rdf:resource="#ChargingStation"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#currentPowerLoad">
+  <rdfs:domain rdf:resource="#ChargingStation"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#operationalStatus">
+  <rdfs:domain rdf:resource="#ChargingStation"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasBatteryCapacity">
+  <rdfs:domain rdf:resource="#ElectricVehicle"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasStateOfCharge">
+  <rdfs:domain rdf:resource="#ElectricVehicle"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#lowerBound">
+  <rdfs:domain rdf:resource="#SoCCluster"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#upperBound">
+  <rdfs:domain rdf:resource="#SoCCluster"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#maxCapacity">
+  <rdfs:domain rdf:resource="#Substation"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#nodalVoltageDeviation">
+  <rdfs:domain rdf:resource="#Substation"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#totalEVCount">
+  <rdfs:domain rdf:resource="#District"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#criticalSoCCount">
+  <rdfs:domain rdf:resource="#District"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#averageSoC">
+  <rdfs:domain rdf:resource="#District"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#isUnderStress">
+  <rdfs:domain rdf:resource="#District"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#highPriority">
+  <rdfs:domain rdf:resource="#ElectricVehicle"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#previousQueueLength">
+  <rdfs:domain rdf:resource="#District"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#InfrastructureComponent">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#GridEntity">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#District">
+  <rdfs:subClassOf rdf:resource="#GridEntity"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ChargingStation">
+  <rdfs:subClassOf rdf:resource="#InfrastructureComponent"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ElectricVehicle">
+  <rdfs:subClassOf rdf:resource="#InfrastructureComponent"/>
+</owl:Class>
+
+<owl:Class rdf:about="#SoCCluster">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#PowerGridComponent">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Substation">
+  <rdfs:subClassOf rdf:resource="#PowerGridComponent"/>
+</owl:Class>
+
+<owl:Class rdf:about="#TransmissionLine">
+  <rdfs:subClassOf rdf:resource="#PowerGridComponent"/>
+</owl:Class>
+
+<owl:Class rdf:about="#PowerOutage">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#QoSRecoveryState">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ChargingSession">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#EVCAR_Agent">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#DistrictAgent">
+  <rdfs:subClassOf rdf:resource="#EVCAR_Agent"/>
+</owl:Class>
+
+<owl:Class rdf:about="#RedistributionAgent">
+  <rdfs:subClassOf rdf:resource="#EVCAR_Agent"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Observation">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Action">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Policy">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Goal">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#RewardFunction">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:NamedIndividual rdf:about="#District_0">
+  <rdf:type rdf:resource="#District"/>
+  <hasNeighbor rdf:resource="#District_1"/>
+  <hasNeighbor rdf:resource="#District_3"/>
+  <hasNeighbor rdf:resource="#District_5"/>
+  <districtType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Residential</districtType>
+  <currentLoad rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</currentLoad>
+  <queueLength rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</queueLength>
+  <congestionLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LOW</congestionLevel>
+  <outageStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</outageStatus>
+  <surgeStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</surgeStatus>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#District_1">
+  <rdf:type rdf:resource="#District"/>
+  <hasNeighbor rdf:resource="#District_2"/>
+  <hasNeighbor rdf:resource="#District_4"/>
+  <districtType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Industrial</districtType>
+  <currentLoad rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</currentLoad>
+  <queueLength rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</queueLength>
+  <congestionLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LOW</congestionLevel>
+  <outageStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</outageStatus>
+  <surgeStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</surgeStatus>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#District_2">
+  <rdf:type rdf:resource="#District"/>
+  <hasNeighbor rdf:resource="#District_3"/>
+  <districtType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Industrial</districtType>
+  <currentLoad rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</currentLoad>
+  <queueLength rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</queueLength>
+  <congestionLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LOW</congestionLevel>
+  <outageStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</outageStatus>
+  <surgeStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</surgeStatus>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#District_3">
+  <rdf:type rdf:resource="#District"/>
+  <hasNeighbor rdf:resource="#District_4"/>
+  <districtType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Residential</districtType>
+  <currentLoad rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</currentLoad>
+  <queueLength rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</queueLength>
+  <congestionLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LOW</congestionLevel>
+  <outageStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</outageStatus>
+  <surgeStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</surgeStatus>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#District_4">
+  <rdf:type rdf:resource="#District"/>
+  <hasNeighbor rdf:resource="#District_5"/>
+  <districtType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Commercial</districtType>
+  <currentLoad rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</currentLoad>
+  <queueLength rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</queueLength>
+  <congestionLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LOW</congestionLevel>
+  <outageStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</outageStatus>
+  <surgeStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</surgeStatus>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#District_5">
+  <rdf:type rdf:resource="#District"/>
+  <districtType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Residential</districtType>
+  <currentLoad rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</currentLoad>
+  <queueLength rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</queueLength>
+  <congestionLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LOW</congestionLevel>
+  <outageStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</outageStatus>
+  <surgeStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</surgeStatus>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CriticalSoC">
+  <rdf:type rdf:resource="#SoCCluster"/>
+  <lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</lowerBound>
+  <upperBound rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</upperBound>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LowSoC">
+  <rdf:type rdf:resource="#SoCCluster"/>
+  <lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">20.0</lowerBound>
+  <upperBound rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">50.0</upperBound>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MediumSoC">
+  <rdf:type rdf:resource="#SoCCluster"/>
+  <lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">50.0</lowerBound>
+  <upperBound rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">80.0</upperBound>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HighSoC">
+  <rdf:type rdf:resource="#SoCCluster"/>
+  <lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">80.0</lowerBound>
+  <upperBound rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">100.0</upperBound>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StationAggregate_District_0">
+  <rdf:type rdf:resource="#ChargingStation"/>
+  <numberOfChargers rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100</numberOfChargers>
+  <currentQueueLength rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</currentQueueLength>
+  <averageWaitingTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</averageWaitingTime>
+  <utilizationFactor rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</utilizationFactor>
+  <operationalStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Operational</operationalStatus>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StationAggregate_District_1">
+  <rdf:type rdf:resource="#ChargingStation"/>
+  <numberOfChargers rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">130</numberOfChargers>
+  <currentQueueLength rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</currentQueueLength>
+  <averageWaitingTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</averageWaitingTime>
+  <utilizationFactor rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</utilizationFactor>
+  <operationalStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Operational</operationalStatus>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StationAggregate_District_2">
+  <rdf:type rdf:resource="#ChargingStation"/>
+  <numberOfChargers rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">110</numberOfChargers>
+  <currentQueueLength rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</currentQueueLength>
+  <averageWaitingTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</averageWaitingTime>
+  <utilizationFactor rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</utilizationFactor>
+  <operationalStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Operational</operationalStatus>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StationAggregate_District_3">
+  <rdf:type rdf:resource="#ChargingStation"/>
+  <numberOfChargers rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">190</numberOfChargers>
+  <currentQueueLength rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</currentQueueLength>
+  <averageWaitingTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</averageWaitingTime>
+  <utilizationFactor rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</utilizationFactor>
+  <operationalStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Offline</operationalStatus>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StationAggregate_District_4">
+  <rdf:type rdf:resource="#ChargingStation"/>
+  <numberOfChargers rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">125</numberOfChargers>
+  <currentQueueLength rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</currentQueueLength>
+  <averageWaitingTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</averageWaitingTime>
+  <utilizationFactor rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</utilizationFactor>
+  <operationalStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Operational</operationalStatus>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StationAggregate_District_5">
+  <rdf:type rdf:resource="#ChargingStation"/>
+  <numberOfChargers rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">90</numberOfChargers>
+  <currentQueueLength rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</currentQueueLength>
+  <averageWaitingTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</averageWaitingTime>
+  <utilizationFactor rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</utilizationFactor>
+  <operationalStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Operational</operationalStatus>
+</owl:NamedIndividual>
+
+
+</rdf:RDF>
