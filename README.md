@@ -159,7 +159,8 @@ kg_integration.kg.save_ontology("evcar_kg_ontology.owl")
 # Load existing ontology
 kg_integration.kg.load_ontology("evcar_kg_ontology.owl")
 ```
-
+## DOI
+ DOI: 10.5281/zenodo.15824931
 ## Citation
 
 If you use EVCAR-KG in your research, please cite:
